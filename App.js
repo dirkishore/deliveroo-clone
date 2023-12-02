@@ -1,8 +1,10 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
-import HomeScreen from "./screens/HomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
+import { Provider } from "react-redux";
+import { store } from "./store";
+
+import HomeScreen from "./screens/HomeScreen";
 import RestaurantScreen from "./screens/RestaurantScreen";
 
 export default function App() {
@@ -11,10 +13,12 @@ export default function App() {
     <>
       <StatusBar style="dark" />
       <NavigationContainer>
-        <stack.Navigator>
-          <stack.Screen name="Home" component={HomeScreen} />
-          <stack.Screen name="Restaurant" component={RestaurantScreen} />
-        </stack.Navigator>
+        <Provider store={store}>
+          <stack.Navigator>
+            <stack.Screen name="Home" component={HomeScreen} />
+            <stack.Screen name="Restaurant" component={RestaurantScreen} />
+          </stack.Navigator>
+        </Provider>
       </NavigationContainer>
     </>
   );

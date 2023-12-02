@@ -11,6 +11,7 @@ import {
 import { StarIcon } from "react-native-heroicons/solid";
 import { Text } from "react-native";
 import { MapPinIcon } from "react-native-heroicons/outline";
+import DishRow from "../components/DishRow";
 
 const RestaurantScreen = () => {
   const navigation = useNavigation();
@@ -34,6 +35,7 @@ const RestaurantScreen = () => {
       headerShown: false,
     });
   });
+
   return (
     <ScrollView>
       <View className="relative">
@@ -80,7 +82,14 @@ const RestaurantScreen = () => {
         <Text className="px-4 font-bold text-xl pt-3 mb-3">Menu</Text>
 
         {dishes.map((dish) => (
-          <DishRow key={dish._id} />
+          <DishRow
+            key={dish._id}
+            id={dish._id}
+            name={dish.name}
+            price={dish.price}
+            short_description={dish.short_description}
+            image={urlFor(dish.image).url()}
+          />
         ))}
       </View>
     </ScrollView>
