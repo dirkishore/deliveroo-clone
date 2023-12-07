@@ -29,8 +29,6 @@ const BasketScreen = () => {
     }, {});
 
     setGroupedItemInBasket(groupedItems);
-
-    console.log(restaurant);
   }, [items]);
 
   return (
